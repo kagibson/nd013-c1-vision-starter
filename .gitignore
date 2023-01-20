@@ -1,3 +1,4 @@
+symlink_id_rsa.sh
 .ssh
 *__pycache__
 *.ipynb_checkpoints/
