@@ -9,6 +9,12 @@
 
 #### Exploratory Data Analysis
 
+I initially did an informal, qualitative analysis of the data by manually running my `display_instances` function  over and over again.
+The function would display 10 random ground truth images with annotated bounding boxes.
+I noticed that the majority of bounding boxes I saw were automobiles, and a smaller amount were pedestrians. It was difficult to see any cyclists so I figured that there was probably a tiny amount in the dataset.
+I also noticed that only about 1 in every 10 images took place at night.
+Lastly, I took note of things like occlusions, reflections on the lense, and fog/mist.
+
 For each of the following analyses, I chose to shuffle the dataset and then take 1000 images from the randomized dataset.
 I made the assumption that the 1000 randomized images from the dataset would provide a good representation for the entire dataset.
 
