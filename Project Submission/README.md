@@ -9,6 +9,12 @@
 
 #### Exploratory Data Analysis
 
+![Class Frequency](../images/frequency_of_classes.png)
+
+![Pixel Distribution By Channel](../image/pixel_distribution_by_channel.png)
+
+![Mean vs Std Dev of Pixel values](../image/mean_vs_stddev.png)
+
 #### Cross-validation Approach
 
 ### Training
