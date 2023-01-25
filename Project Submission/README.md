@@ -33,6 +33,12 @@ From this plot it seems that there is a smaller amount of images with a small me
 These images are very dark and have very few lighter pixels.
 We may need to augment the dataset to include more images like this.
 
+From my qualitative and quantitative analysis, the following seems to be true about the dataset:
+
+- A little less than 80% of the annotated classes are automobiles, about 20% are pedestrians and about 1-2% are cyclists.
+- There is a small amount of nighttime images, perhaps 10%.
+- A large majority of the bounding boxes have an area of less than 1000px. That is less than 0.25% of the image area (1000/409600)
+
 #### Cross-validation Approach
 
 ### Training
