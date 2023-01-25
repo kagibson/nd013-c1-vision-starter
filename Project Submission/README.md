@@ -33,6 +33,14 @@ From this plot it seems that there is a smaller amount of images with a small me
 These images are very dark and have very few lighter pixels.
 We may need to augment the dataset to include more images like this.
 
+The last analysis I did was calculating the areas of all bounding boxes for the sample dataset. There was a small amount of very large bounding boxes that were biasing the distribution so I removed them (everything above 10000px) and plotted them separately:
+
+![Distribution of bounding box areas](../images/bounding_box_areas.png)
+
+From this plot it seems there is a very large number of small bounding boxes (under 1000px).
+Depending on the object detection model type (such as YOLO), these small objects could prove difficult to detect. I also noticed a few bounding boxes that were the same size of the image (409600px).
+On inspection these boxes seemed to be erroneous and could be removed from the dataset.
+
 From my qualitative and quantitative analysis, the following seems to be true about the dataset:
 
 - A little less than 80% of the annotated classes are automobiles, about 20% are pedestrians and about 1-2% are cyclists.
