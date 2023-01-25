@@ -11,9 +11,9 @@
 
 ![Class Frequency](../images/frequency_of_classes.png)
 
-![Pixel Distribution By Channel](../image/pixel_distribution_by_channel.png)
+![Pixel Distribution By Channel](../images/pixel_distribution_by_channel.png)
 
-![Mean vs Std Dev of Pixel values](../image/mean_vs_stddev.png)
+![Mean vs Std Dev of Pixel values](../images/mean_vs_stddev.png)
 
 #### Cross-validation Approach
 
