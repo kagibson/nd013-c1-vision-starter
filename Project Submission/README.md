@@ -29,6 +29,10 @@ Another analysis I performed was calculating the mean and standard deviation of 
 
 ![Mean vs Std Dev of Pixel values](../images/mean_vs_stddev.png)
 
+From this plot it seems that there is a smaller amount of images with a small mean and standard deviation.
+These images are very dark and have very few lighter pixels.
+We may need to augment the dataset to include more images like this.
+
 #### Cross-validation Approach
 
 ### Training
