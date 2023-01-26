@@ -15,6 +15,8 @@ I noticed that the majority of bounding boxes I saw were automobiles, and a smal
 I also noticed that only about 1 in every 10 images took place at night.
 Lastly, I took note of things like occlusions, reflections on the lense, and fog/mist.
 
+![10 Random Images](../images/display_instances.png)
+
 For each of the following analyses, I chose to shuffle the dataset and then take 1000 images from the randomized dataset.
 I made the assumption that the 1000 randomized images from the dataset would provide a good representation for the entire dataset.
 
