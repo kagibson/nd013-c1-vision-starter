@@ -59,44 +59,53 @@ From my qualitative and quantitative analysis, the following seems to be true ab
 
 #### Cross-validation Approach
 
+Since I used the provided workspace to do this project, the data was already split up. However, if I were to split up the data myself, my cross-validation approach would be the following:
+- Shuffle the dataset to increase variance and avoid overfitting of training data
+- 
+-
+
+
 ### Training
 
 #### Reference Experiment
 
+![Reference Experiment Training Loss](../images/reference-loss.png)
+
 ```
-I0127 05:24:54.588876 139639361640192 model_lib_v2.py:988] Eval metrics at step 2500
-INFO:tensorflow:    + DetectionBoxes_Precision/mAP: 0.000226
-I0127 05:24:54.597585 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP: 0.000226
-INFO:tensorflow:    + DetectionBoxes_Precision/mAP@.50IOU: 0.000875
-I0127 05:24:54.599640 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP@.50IOU: 0.000875
-INFO:tensorflow:    + DetectionBoxes_Precision/mAP@.75IOU: 0.000128
-I0127 05:24:54.601336 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP@.75IOU: 0.000128
-INFO:tensorflow:    + DetectionBoxes_Precision/mAP (small): 0.000000
-I0127 05:24:54.603035 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP (small): 0.000000
-INFO:tensorflow:    + DetectionBoxes_Precision/mAP (medium): 0.000990
-I0127 05:24:54.604706 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP (medium): 0.000990
-INFO:tensorflow:    + DetectionBoxes_Precision/mAP (large): 0.003462
-I0127 05:24:54.606321 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP (large): 0.003462
-INFO:tensorflow:    + DetectionBoxes_Recall/AR@1: 0.000030
-I0127 05:24:54.608170 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@1: 0.000030
-INFO:tensorflow:    + DetectionBoxes_Recall/AR@10: 0.002595
-I0127 05:24:54.610029 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@10: 0.002595
-INFO:tensorflow:    + DetectionBoxes_Recall/AR@100: 0.008125
-I0127 05:24:54.611683 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@100: 0.008125
-INFO:tensorflow:    + DetectionBoxes_Recall/AR@100 (small): 0.000000
-I0127 05:24:54.613256 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@100 (small): 0.000000
-INFO:tensorflow:    + DetectionBoxes_Recall/AR@100 (medium): 0.000373
-I0127 05:24:54.614885 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@100 (medium): 0.000373
-INFO:tensorflow:    + DetectionBoxes_Recall/AR@100 (large): 0.161800
-I0127 05:24:54.616852 139639361640192 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@100 (large): 0.161800
-INFO:tensorflow:    + Loss/localization_loss: 0.984369
-I0127 05:24:54.618325 139639361640192 model_lib_v2.py:991]  + Loss/localization_loss: 0.984369
-INFO:tensorflow:    + Loss/classification_loss: 0.728822
-I0127 05:24:54.619867 139639361640192 model_lib_v2.py:991]  + Loss/classification_loss: 0.728822
-INFO:tensorflow:    + Loss/regularization_loss: 5.543651
-I0127 05:24:54.621390 139639361640192 model_lib_v2.py:991]  + Loss/regularization_loss: 5.543651
-INFO:tensorflow:    + Loss/total_loss: 7.256842
-I0127 05:24:54.622891 139639361640192 model_lib_v2.py:991]  + Loss/total_loss: 7.256842
+INFO:tensorflow:Eval metrics at step 2500
+I0225 20:13:04.548510 139634023094016 model_lib_v2.py:988] Eval metrics at step 2500
+INFO:tensorflow:    + DetectionBoxes_Precision/mAP: 0.000033
+I0225 20:13:04.557912 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP: 0.000033
+INFO:tensorflow:    + DetectionBoxes_Precision/mAP@.50IOU: 0.000221
+I0225 20:13:04.559884 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP@.50IOU: 0.000221
+INFO:tensorflow:    + DetectionBoxes_Precision/mAP@.75IOU: 0.000003
+I0225 20:13:04.561666 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP@.75IOU: 0.000003
+INFO:tensorflow:    + DetectionBoxes_Precision/mAP (small): 0.000524
+I0225 20:13:04.563529 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP (small): 0.000524
+INFO:tensorflow:    + DetectionBoxes_Precision/mAP (medium): 0.000088
+I0225 20:13:04.565413 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP (medium): 0.000088
+INFO:tensorflow:    + DetectionBoxes_Precision/mAP (large): 0.000035
+I0225 20:13:04.567128 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Precision/mAP (large): 0.000035
+INFO:tensorflow:    + DetectionBoxes_Recall/AR@1: 0.000020
+I0225 20:13:04.568839 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@1: 0.000020
+INFO:tensorflow:    + DetectionBoxes_Recall/AR@10: 0.000230
+I0225 20:13:04.570428 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@10: 0.000230
+INFO:tensorflow:    + DetectionBoxes_Recall/AR@100: 0.003334
+I0225 20:13:04.572417 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@100: 0.003334
+INFO:tensorflow:    + DetectionBoxes_Recall/AR@100 (small): 0.000746
+I0225 20:13:04.573936 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@100 (small): 0.000746
+INFO:tensorflow:    + DetectionBoxes_Recall/AR@100 (medium): 0.019776
+I0225 20:13:04.575543 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@100 (medium): 0.019776
+INFO:tensorflow:    + DetectionBoxes_Recall/AR@100 (large): 0.001600
+I0225 20:13:04.577244 139634023094016 model_lib_v2.py:991]  + DetectionBoxes_Recall/AR@100 (large): 0.001600
+INFO:tensorflow:    + Loss/localization_loss: 1.018727
+I0225 20:13:04.578658 139634023094016 model_lib_v2.py:991]  + Loss/localization_loss: 1.018727
+INFO:tensorflow:    + Loss/classification_loss: 0.654525
+I0225 20:13:04.580101 139634023094016 model_lib_v2.py:991]  + Loss/classification_loss: 0.654525
+INFO:tensorflow:    + Loss/regularization_loss: 9.250709
+I0225 20:13:04.581506 139634023094016 model_lib_v2.py:991]  + Loss/regularization_loss: 9.250709
+INFO:tensorflow:    + Loss/total_loss: 10.923960
+I0225 20:13:04.582908 139634023094016 model_lib_v2.py:991]  + Loss/total_loss: 10.923960
 ```
 
 #### Reference Experiment Improvement
