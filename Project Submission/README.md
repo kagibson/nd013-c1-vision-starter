@@ -3,6 +3,8 @@
 
 ### Project Overview
 
+The goal of this project is to train a deep-learning model to accurately recognize certain classes of objects in a image dataset. We are using the Waymo Open Dataset for this and the classes we are trying to detect are cars, pedestrians and cyclists. In doing so, we will learn about exploratory data analysis, using different types of object detection models, tuning hyperparameters and augmenting images within a dataset to better your results. Object detection is an extremely important part of self-driving vehicles as these vehicles should be able to operate in a range of different urban and rural environments in which they may be confronted with a diversity of potential obstacles. Safety is of upmost importance in these applications and well-tuned vision systems can take the place of human eyes.
+
 ### Set Up
 
 ### Dataset
@@ -112,4 +114,9 @@ I0127 05:24:54.622891 139639361640192 model_lib_v2.py:991]  + Loss/total_loss: 7
 #### Experiment 3
 
 ![Experiment3 Training Loss](../images/experiment3-loss.png)
+
+
+#### Experiment 4
+
+![Experiment4 Training Loss](../images/experiment-4-loss.png)
 
