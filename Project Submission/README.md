@@ -7,6 +7,8 @@ The goal of this project is to train a deep-learning model to accurately recogni
 
 ### Set Up
 
+Since I mostly worked out of the workspace, everything was already setup for me and I was able to use the instructions in the readme to run the provided code. There is also a provided Dockerfile and requirements.txt, however, there are issues with the dependencies in the provided Dockerfile and I was not successful at running on my local machine. I was able to fix some of these issues by upgrading Tensorflow and Keras to 2.11, however, this wasn't ideal as this didn't support the version of Waymo Open Dataset we are using. Additionally, I still received errors with CUDA not recognizing my GPU (even though it should be CUDA capable). Hopefully these issues will be worked out soon as the workspace is limited in memory and many students seem to be struggling with this project because of that.
+
 ### Dataset
 
 #### Exploratory Data Analysis
@@ -61,13 +63,15 @@ From my qualitative and quantitative analysis, the following seems to be true ab
 
 Since I used the provided workspace to do this project, the data was already split up. However, if I were to split up the data myself, my cross-validation approach would be the following:
 - Shuffle the dataset to increase variance and avoid overfitting of training data
-- 
--
+- Split the dataset so that 80-90% is used for training and the other 10-20% is used for validation.
 
+However, there are many different methods for cross-validation such as k-fold, leave-one-out and stratified.
 
 ### Training
 
 #### Reference Experiment
+
+As predicted, the results of the reference experiment were not that great. We used trained on a pretrained Single Shot Detection Resnet 50 640x640 model with a batch size of 2 and 2500 training steps. At the end of step 2500, the loss was around 10 which was too high to accurately detect objects. However, the loss during evaluation at the end of step 2500 was fairly close the training loss so it seems that the model wasn't overfitting.
 
 ![Reference Experiment Training Loss](../images/reference-loss.png)
 
@@ -112,20 +116,48 @@ I0225 20:13:04.582908 139634023094016 model_lib_v2.py:991]  + Loss/total_loss: 1
 
 ##### Experiment 1
 
+To improve on the models performance, I tried the following:
+
+1. Increased the batch size to 16
+2. Increased the number of steps to 25000
+3. Added augmentations to individual images
+
+For augmentations I added random brightness adjust as I felt that the dataset didn't have enough variability in brightness (as demonstrated in the EDA section above).
+I also added random contrast adjust for the same reason.
+Additionally I added some random black patches as there were many large unobstructed vehicles and I thought it would be good to add some obstructions as real-world data would likely have some.
+
+I ended up stopping training after about 1500 steps. The loss had yet to plateau, however, so I likely could've run it longer.
+I ran the evaluation step and unfortunately, only one point was produced (I believe this is a bug?). However, at this point the total loss seemed to be a bit higher than it was in training so there could've been some overfitting.
+
 ![Experiment1 Training Loss](../images/experiment1-loss.png)
+
+The model performed reasonably well on the test data as shown in the video below, though the confidence wasn't very high on the detected vehicles and small vehicles weren't detected.
 
 ![Experiment1 Results Video](../experiments/experiment1/animation.gif)
 
 #### Experiment 2
 
+For my second experiment, I decided to try a constant learning rate of 0.001. I stopped the training after 400 steps as the total loss seemed to reach a plateau. Unfortunately, running the exported model on the test data yielded no detections. Likely this model was overfit to the training data.
+
 ![Experiment2 Training Loss](../images/experiment2-loss.png)
 
 #### Experiment 3
+
+For experiment 3, I tried the Adam optimizer instead of Momentum. I once again stopped training around 1500 steps. This yielded poor results as the total loss was way too high.
 
 ![Experiment3 Training Loss](../images/experiment3-loss.png)
 
 
 #### Experiment 4
 
+For my final experiment, I decided to go back to my fairly successful results in Experiment 1 but reduce the base learning rate to 0.01 to hopefully reduce overfitting. I was able to get the total loss below 1, but evaluation showed a bit of overfitting. Unfortunately, the *inference.py* script outputted a corrupt video so I was unable to see how the exported model performed on the test data.
+
 ![Experiment4 Training Loss](../images/experiment-4-loss.png)
 
+#### Future Improvements
+
+There are many improvements I would've liked to try, however, the provided workspace proved to be very difficult to use for training as it frequently ran out of memory and the local workspace steps were incomplete.
+
+Single-shot detection doesn't perform as well on small objects as it does on larger objects, therefore, I would've liked to experiment with some other models.
+
+The test images that I used for the video only featured cars. I would've liked to see the trained models results on images that also featured pedestrians and cyclists since those were less represented in the dataset.
