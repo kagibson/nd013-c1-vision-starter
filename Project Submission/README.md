@@ -124,7 +124,7 @@ To improve on the models performance, I tried the following:
 
 For augmentations I added random brightness adjust as I felt that the dataset didn't have enough variability in brightness (as demonstrated in the EDA section above).
 I also added random contrast adjust for the same reason.
-Additionally I added some random black patches as there were many large unobstructed vehicles and I thought it would be good to add some obstructions as real-world data would likely have some.
+Additionally I added some random black patches as there were many large unobstructed vehicles and I thought it would be good to add some obstructions as real-world data would likely have some. An example of the augmentations can be seen in [Explore Augmentations](../Explore%20augmentations.ipynb)
 
 I ended up stopping training after about 1500 steps. The loss had yet to plateau, however, so I likely could've run it longer.
 I ran the evaluation step and unfortunately, only one point was produced (I believe this is a bug?). However, at this point the total loss seemed to be a bit higher than it was in training so there could've been some overfitting.
